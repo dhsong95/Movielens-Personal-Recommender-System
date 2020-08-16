@@ -36,6 +36,14 @@ class AutoEncoder:
         return keras.Model(rating, rating_hat)
 
     def loss_function(self, y_true, y_pred):
+        ''' custom loss function
+
+        Custom Loss Function to calculate loss of tanh.
+        Moreover, to only consider the item that is rated by user(positive or negative), 
+        to calculate mean, divide by only using the number of item that is rated.
+        Also modify binary cross-entropy to consider -1 and 1 case.
+
+        '''
         N = K.sum(tf.cast((y_true == 1.0) | (y_true == -1.0), tf.float32))
 
         mask = y_true != 0

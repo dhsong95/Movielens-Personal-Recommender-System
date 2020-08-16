@@ -1,3 +1,5 @@
+import numpy as np
+
 from item2vec import Item2Vector
 from metrics import n_precision
 from metrics import n_recall
@@ -8,6 +10,7 @@ from utils import transform_binary_matrix
 
 
 if __name__ == '__main__':
+    # Load and Preprocess Dataset
     rating_df = load_ratings('ratings.csv')
     user2idx, movie2idx = get_user_movie_dictionary(rating_df)
     print(f'# of user: {len(user2idx)}\t# of movie: {len(movie2idx)}')
@@ -27,8 +30,13 @@ if __name__ == '__main__':
         f'Validation Size: {rating_matrix_val.count_nonzero()}'
     )
 
+    # Train Item2Vec Model
     model = Item2Vector(item_dim=len(movie2idx), embedding_dim=100)
     model.train(rating_matrix_train)
 
+    # Make Embeddings
     embeddings = model.get_embeddings()
     print(embeddings.shape)
+
+    # Save Embeddings
+    np.savez('./output/embedding.npz', embeddings)
