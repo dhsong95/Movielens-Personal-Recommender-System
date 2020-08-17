@@ -1,5 +1,5 @@
-# SKT-Personal-Recommender-System
-SKT 개인과제 추천 시스템 구축
+# Movielens-Personal-Recommender-System
+Movielens 개인과제 추천 시스템 구축
 
 # 1. Matrix Factorization Model
 
