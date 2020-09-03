@@ -1,5 +1,5 @@
 # Movielens-Personal-Recommender-System
-Movielens 개인과제 추천 시스템 구축
+Movielens 개인화 추천 시스템 구축
 
 # 1. Matrix Factorization Model
 
